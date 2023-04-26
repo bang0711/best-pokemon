@@ -1,27 +1,141 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border-radius: 10px;
+  }
+  .pokemonShadow {
+    filter: drop-shadow(20px 10px 8px #14121281);
+  }
+  .mythical-button {
+    box-shadow: 0 0 25px rgb(206, 12, 93);
+  }
+  .legendary-button {
+    box-shadow: 0 0 25px rgb(220, 202, 37);
+  }
+  .baby-button {
+    box-shadow: 0 0 25px rgb(233, 38, 38);
+  }
+  .active-legendary-button {
+    box-shadow: 0 0 5px rgb(220, 202, 37), 0 0 25px rgb(220, 202, 37),
+      0 0 50px rgb(220, 202, 37), 0 0 100px rgb(220, 202, 37);
+  }
+  .active-mythical-button {
+    box-shadow: 0 0 5px rgb(206, 12, 93), 0 0 25px rgb(206, 12, 93),
+      0 0 50px rgb(206, 12, 93), 0 0 100px rgb(206, 12, 93);
+  }
+  .active-baby-button {
+    box-shadow: 0 0 5px rgb(233, 38, 38), 0 0 25px rgb(233, 38, 38),
+      0 0 50px rgb(233, 38, 38), 0 0 100px rgb(233, 38, 38);
+  }
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --color-background: #000119;
+    --stroke-width: calc(1em / 16);
+    --font-size: 30vmin;
+    --font-weight: 700;
+    --letter-spacing: calc(1em / 8);
+  }
+
+  * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .legendary-text {
+    background-image: linear-gradient(
+      to right,
+      #462523 0,
+      #cb9b51 22%,
+      #f6e27a 45%,
+      #f6f2c0 50%,
+      #f6e27a 55%,
+      #cb9b51 78%,
+      #462523 100%
+    );
+    color: transparent;
+    -webkit-background-clip: text;
+  }
+  .mythical-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      from(#09f1b8),
+      color-stop(#00a2ff),
+      color-stop(#ff00d2),
+      to(#fed90f)
+    );
+    background-image: -o-linear-gradient(
+      left,
+      #09f1b8,
+      #00a2ff,
+      #ff00d2,
+      #fed90f
+    );
+    background-image: linear-gradient(
+      to right,
+      #09f1b8,
+      #00a2ff,
+      #ff00d2,
+      #fed90f
+    );
+    color: #000119;
+    color: var(--color-background);
+    font-size: 30vmin;
+    font-size: var(--font-size);
+    font-weight: 700;
+    font-weight: var(--font-weight);
+    letter-spacing: calc(1em / 8);
+    letter-spacing: var(--letter-spacing);
+    padding: calc(--stroke-width / 2);
+    -webkit-text-stroke-color: transparent;
+    -webkit-text-stroke-width: calc(1em / 16);
+    -webkit-text-stroke-width: var(--stroke-width);
+  }
+  .active {
+    background-color: gray;
+  }
+  .active-button {
+    box-shadow: 0 0 5px rgb(93, 90, 90), 0 0 25px rgb(93, 90, 90),
+      0 0 50px rgb(93, 90, 90), 0 0 100px rgb(93, 90, 90);
+  }
+}
+@layer components {
+  .main {
+    display: block;
+    top: 50%;
+    left: 30%;
+    -webkit-transform: translate(-50%, -50%);
+
+    font-family: "neontubes";
+  }
+  .main span {
+    display: block;
+    position: relative;
+    -webkit-transform: translateZ(0) translate3D(0, 0, 0);
+    transform: translateZ(0) translate3D(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: opacity;
+  }
+  .webdev {
+    color: #ffd9e2;
+    text-shadow: 0 0 0 transparent, 0 0 10px #ff003c,
+      0 0 20px rgba(255, 0, 60, 0.5), 0 0 40px #ff003c, 0 0 100px #ff003c,
+      0 0 200px #ff003c, 0 0 300px #ff003c, 0 0 500px #ff003c,
+      0 0 1000px #ff003c;
+  }
+  .test {
+    background-image: url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png");
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+* {
+  user-select: none;
 }
